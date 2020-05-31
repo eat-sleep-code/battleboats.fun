@@ -104,11 +104,11 @@ $(document).ready(function () {
 	function SetImage(y, x, id, isEnemy) {
 		if (isEnemy) {
 			enemy[y][x][0] = id;
-			document.images["pc" + y + "_" + x].src = prefix + id + extension;
+			document.images["enemy" + y + "_" + x].src = prefix + id + extension;
 		}
 		else {
 			allied[y][x][0] = id;
-			document.images["ply" + y + "_" + x].src = prefix + id + extension;
+			document.images["allied" + y + "_" + x].src = prefix + id + extension;
 		}
 	}
 
@@ -120,10 +120,10 @@ $(document).ready(function () {
 		for (y = 0; y < gridY; ++y) {
 			for (x = 0; x < gridX; ++x) {
 				if (isEnemy) {
-					innerHtml += '<img name="pc' + y + '_' + x + '" src="' + prefix + '100' + extension + '" class="grid enemy" data-y="' + y + '" data-x="' + x + '">';
+					innerHtml += '<img name="enemy' + y + '_' + x + '" src="' + prefix + '100' + extension + '" class="grid enemy" data-y="' + y + '" data-x="' + x + '">';
 				}
 				else {
-					innerHtml += '<img name="ply' + y + '_' + x + '" src="' + prefix + allied[y][x][0] + extension + '" class="grid allied" data-y="' + y + '" data-x="' + x + '">';
+					innerHtml += '<img name="allied' + y + '_' + x + '" src="' + prefix + allied[y][x][0] + extension + '" class="grid allied" data-y="' + y + '" data-x="' + x + '">';
 				}
 			}
 		}
@@ -134,9 +134,11 @@ $(document).ready(function () {
 	function CommenceFiring(y, x) {
 		if (playflag) {
 			if (enemy[y][x][0] < 100) {
+				audio.hit.play();
 				SetImage(y, x, 103, true);
 				var shipNumber = enemy[y][x][1];
 				if (--enemyShips[shipNumber][1] == 0) {
+					audio.sink.play();
 					SinkShip(enemy, shipNumber, true);
 					UpdateAlert("You sank an enemy " + shipTypes[enemyShips[shipNumber][0]][0] + "!", 2000);
 					UpdateStatus();
@@ -148,6 +150,7 @@ $(document).ready(function () {
 				if (playflag) TorpedoesInTheWater();
 			}
 			else if (enemy[y][x][0] == 100) {
+				audio.splash.play();
 				SetImage(y, x, 102, true);
 				TorpedoesInTheWater();
 			}
@@ -205,10 +208,12 @@ $(document).ready(function () {
 		}
 		if (allied[sy][sx][0] < 100) {
 			/* Hit something */
+			audio.hit.play();
 			SetImage(sy, sx, 103, false);
 			var shipNumber = allied[sy][sx][1];
 			if (--alliedShips[shipNumber][1] == 0) {
 				SinkShip(allied, shipNumber, false);
+				audio.sink.play();
 				UpdateAlert("The enemy has sank your " + shipTypes[alliedShips[shipNumber][0]][0] + "!", 2000);
 				if (--alliedLives == 0) {
 					KnowYourEnemy();
@@ -219,6 +224,7 @@ $(document).ready(function () {
 		}
 		else {
 			/* Missed */
+			audio.splash.play();
 			SetImage(sy, sx, 102, false);
 		}
 	}
@@ -263,7 +269,7 @@ $(document).ready(function () {
 	}
 
 	function UpdateAlert(message, showFor) {
-		console.log(message, showFor);
+		//console.log(message, showFor);
 		$('.alert').empty().show().html(message).delay(3000).fadeOut(300);
 	}
 	
