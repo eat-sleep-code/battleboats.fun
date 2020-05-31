@@ -22,16 +22,18 @@ body
 
 .game-container > div
 { 
+	align-items: center;
     display: flex;
     height: 100vh;
     margin: auto;
-	width: 100vh;
+	width: 100vw;
 }
 
 @media (max-width: 576px) 
 {
     .game-container > div
     {
+		display: block;
         width: 100vw;
     }
 }
@@ -44,5 +46,14 @@ body
 	margin: 0;
 	padding: 0;
 	width: 3vw;
+}
+
+@media (max-width: 576px) 
+{
+    .game-container > div img
+    {
+		height: 6vw;
+		width: 6vw;
+    }
 }
 
