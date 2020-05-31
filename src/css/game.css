@@ -39,19 +39,19 @@ body
     }
 }
 
-.game-container > div > div
+.game-container .enemy-ships,
+.game-container .allied-ships
 {
-	flex: 1 0 50%;
+	display: flex;
+	max-width: 700px;
 }
 
 .game-container > div img
 {
 	border: 0;
-	flex: 1 0 6.25%;
-	/* height: 3vw; */
+	width: calc(100% - 50% / 16);
 	margin: 0;
 	padding: 0;
-	/* width: 3vw; */
 }
 
 @media (max-width: 576px) 
