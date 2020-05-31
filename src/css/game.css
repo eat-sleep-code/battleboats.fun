@@ -13,11 +13,6 @@ body
 	overflow: hidden;
 }
 
-.d-none
-{
-	display: none;
-}
-
 .game-container
 {
 	width: 100%;

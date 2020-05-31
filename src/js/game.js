@@ -263,8 +263,7 @@ $(document).ready(function () {
 	}
 
 	function UpdateAlert(message) {
-		$('.alert').html(message);
-		$('.alert').show().delay(2000).hide(500);
+		$('.alert').html(message).delay(2000);
 	}
 	
 
