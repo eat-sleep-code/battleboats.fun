@@ -231,8 +231,8 @@ $(document).ready(function () {
 				audio.splash.play();
 				SetImage(sy, sx, 102, false);
 			}
-		}, 1000);
-		
+		}, 3000);
+
 		$('.enemy-ships').fadeTo( "slow", 1.0 );
 		$('.allied-ships').fadeTo( "slow", 0.7 );
 	}
