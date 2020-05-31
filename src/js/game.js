@@ -263,9 +263,7 @@ $(document).ready(function () {
 		statusMessage = s;
 		window.status = statusMessage;
 	}
-	function setStatus() {
-		window.status = statusMessage;
-	}
+	
 
 	/* Start the game! */
 	Preload();
@@ -274,7 +272,7 @@ $(document).ready(function () {
 	$('.enemy-ships').html(RenderGrid(true));
 	$('.allied-ships').html(RenderGrid(false));
 	UpdateStatus();
-	setInterval("setStatus();", 500);
+	//setInterval(window.status = statusMessage, 500);
 
 
 	$(".grid").click(function(e) {
