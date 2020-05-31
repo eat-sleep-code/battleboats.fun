@@ -159,8 +159,8 @@ $(document).ready(function () {
 
 	/* Function to make the enemy's move. Note that the enemy does not cheat, oh no! */
 	function TorpedoesInTheWater() {
-		$('.enemy-ships').delay(1000).css({ 'opacity' : 0.7 });
-		$('.allied-ships').delay(1000).css({ 'opacity' : 1.0 });
+		$('.enemy-ships').fadeTo( "slow", 0.7 );
+		$('.allied-ships').fadeTo( "slow", 1.0 );
 		var x, y, pass;
 		var sx, sy;
 		var selected = false;
@@ -230,8 +230,8 @@ $(document).ready(function () {
 			SetImage(sy, sx, 102, false);
 		}
 
-		$('.enemy-ships').delay(100).css({ 'opacity' : 1.0 });
-		$('.allied-ships').delay(100).css({ 'opacity' : 0.7 });
+		$('.enemy-ships').fadeTo( "slow", 1.0 );
+		$('.allied-ships').fadeTo( "slow", 0.7 );
 	}
 
 	/* When whole ship is hit, show it using changed graphics */
