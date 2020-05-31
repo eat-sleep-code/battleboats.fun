@@ -1,0 +1,6 @@
+.DS_Store
+.firebase
+tmp
+node_modules
+package-lock.json
+.firebaserc

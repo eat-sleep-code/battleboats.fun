@@ -1,0 +1,41 @@
+{
+  "name": "invaders",
+  "version": "2020.05.30.16",
+  "description": "Battle Boats",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eat-sleep-code/battleboats.fun.git"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-minify": "^0.5.1",
+    "grunt": "^1.1.0",
+    "grunt-babel": "^8.0.0",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-cssmin": "^3.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-git-deploy": "^0.3.1",
+    "jquery": "^3.5.1",
+    "js-obfuscator": "^0.1.4"
+  },
+  "keywords": [
+    "game",
+    "javascript",
+    "alien",
+    "invasion",
+    "space"
+  ],
+  "author": " <eat-sleep-code />",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eat-sleep-code/battleboats.fun/issues"
+  },
+  "homepage": "https://github.com/eat-sleep-code/battleboats.fun#readme"
+}
