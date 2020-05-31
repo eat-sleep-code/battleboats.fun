@@ -138,11 +138,10 @@ $(document).ready(function () {
 				var shipNumber = enemy[y][x][1];
 				if (--enemyShips[shipNumber][1] == 0) {
 					SinkShip(enemy, shipNumber, true);
-					alert("You sank my " + shipTypes[enemyShips[shipNumber][0]][0] + "!");
+					UpdateAlert("You sank my " + shipTypes[enemyShips[shipNumber][0]][0] + "!");
 					UpdateStatus();
 					if (--enemylives == 0) {
-						alert("You win! Press the Refresh button on\n" +
-							"your browser to play another game.");
+						UpdateAlert("You win!");
 						playflag = false;
 					}
 				}
@@ -210,10 +209,10 @@ $(document).ready(function () {
 			var shipNumber = allied[sy][sx][1];
 			if (--alliedShips[shipNumber][1] == 0) {
 				SinkShip(allied, shipNumber, false);
-				alert("I sank your " + shipTypes[alliedShips[shipNumber][0]][0] + "!");
+				UpdateAlert("I sank your " + shipTypes[alliedShips[shipNumber][0]][0] + "!");
 				if (--alliedLives == 0) {
 					KnowYourEnemy();
-					alert("I win! Press the Refresh button on\n" + "your browser to play another game.");
+					UpdateAlert("I win!");
 					playflag = false;
 				}
 			}
@@ -261,6 +260,11 @@ $(document).ready(function () {
 		if (!f) s = s + "nothing left, thanks to you!";
 		statusMessage = s;
 		window.status = statusMessage;
+	}
+
+	function UpdateAlert(message) {
+		$('.message').html(message);
+		$('.message').show().delay(2000).hide(500);
 	}
 	
 

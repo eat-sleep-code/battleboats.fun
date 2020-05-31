@@ -8,9 +8,14 @@ html
 body
 {
     background: rgba(0, 0, 0, 1.0);
-    background-image: url('/images/background.png');
+    background-image: url('/images/background.jpg');
     font-family: Verdana, sans-serif;
 	overflow: hidden;
+}
+
+.d-none
+{
+	display: none;
 }
 
 .game-container
@@ -50,7 +55,7 @@ body
 
 .game-container > div img
 {
-	border: 0;
+	border: 1px dotted rgba(255, 255, 255 0.5);
 	display: block;
 	width: calc(100% / 16);
 	margin: 0;
