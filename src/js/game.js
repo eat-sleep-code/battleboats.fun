@@ -161,75 +161,78 @@ $(document).ready(function () {
 	function TorpedoesInTheWater() {
 		$('.enemy-ships').fadeTo( "slow", 0.7 );
 		$('.allied-ships').fadeTo( "slow", 1.0 );
-		var x, y, pass;
-		var sx, sy;
-		var selected = false;
 
-		/* Make two passes during 'shoot to kill' mode */
-		for (pass = 0; pass < 2; ++pass) {
-			for (y = 0; y < gridY && !selected; ++y) {
-				for (x = 0; x < gridX && !selected; ++x) {
-					/* Explosion shown at this position */
-					if (allied[y][x][0] == 103) {
-						sx = x; sy = y;
-						var nup = (y > 0 && allied[y - 1][x][0] <= 100);
-						var ndn = (y < gridY - 1 && allied[y + 1][x][0] <= 100);
-						var nlt = (x > 0 && allied[y][x - 1][0] <= 100);
-						var nrt = (x < gridX - 1 && allied[y][x + 1][0] <= 100);
-						if (pass == 0) {
-							/* On first pass look for two explosions in a row - next shot will be inline */
-							var yup = (y > 0 && allied[y - 1][x][0] == 103);
-							var ydn = (y < gridY - 1 && allied[y + 1][x][0] == 103);
-							var ylt = (x > 0 && allied[y][x - 1][0] == 103);
-							var yrt = (x < gridX - 1 && allied[y][x + 1][0] == 103);
-							if (nlt && yrt) { sx = x - 1; selected = true; }
-							else if (nrt && ylt) { sx = x + 1; selected = true; }
-							else if (nup && ydn) { sy = y - 1; selected = true; }
-							else if (ndn && yup) { sy = y + 1; selected = true; }
-						}
-						else {
-							/* Second pass look for single explosion - fire shots all around it */
-							if (nlt) { sx = x - 1; selected = true; }
-							else if (nrt) { sx = x + 1; selected = true; }
-							else if (nup) { sy = y - 1; selected = true; }
-							else if (ndn) { sy = y + 1; selected = true; }
+		window.setTimeout(function(){
+			var x, y, pass;
+			var sx, sy;
+			var selected = false;
+
+			/* Make two passes during 'shoot to kill' mode */
+			for (pass = 0; pass < 2; ++pass) {
+				for (y = 0; y < gridY && !selected; ++y) {
+					for (x = 0; x < gridX && !selected; ++x) {
+						/* Explosion shown at this position */
+						if (allied[y][x][0] == 103) {
+							sx = x; sy = y;
+							var nup = (y > 0 && allied[y - 1][x][0] <= 100);
+							var ndn = (y < gridY - 1 && allied[y + 1][x][0] <= 100);
+							var nlt = (x > 0 && allied[y][x - 1][0] <= 100);
+							var nrt = (x < gridX - 1 && allied[y][x + 1][0] <= 100);
+							if (pass == 0) {
+								/* On first pass look for two explosions in a row - next shot will be inline */
+								var yup = (y > 0 && allied[y - 1][x][0] == 103);
+								var ydn = (y < gridY - 1 && allied[y + 1][x][0] == 103);
+								var ylt = (x > 0 && allied[y][x - 1][0] == 103);
+								var yrt = (x < gridX - 1 && allied[y][x + 1][0] == 103);
+								if (nlt && yrt) { sx = x - 1; selected = true; }
+								else if (nrt && ylt) { sx = x + 1; selected = true; }
+								else if (nup && ydn) { sy = y - 1; selected = true; }
+								else if (ndn && yup) { sy = y + 1; selected = true; }
+							}
+							else {
+								/* Second pass look for single explosion - fire shots all around it */
+								if (nlt) { sx = x - 1; selected = true; }
+								else if (nrt) { sx = x + 1; selected = true; }
+								else if (nup) { sy = y - 1; selected = true; }
+								else if (ndn) { sy = y + 1; selected = true; }
+							}
 						}
 					}
 				}
 			}
-		}
-		if (!selected) {
-			/* 
-			   Nothing found in 'shoot to kill' mode, so we're just taking potshots. 
-			   Random shots are in a chequerboard pattern for maximum efficiency, and never twice in the same place
-			*/
-			do {
-				sy = Math.floor(Math.random() * gridY);
-				sx = Math.floor(Math.random() * gridX / 2) * 2 + sy % 2;
-			} while (allied[sy][sx][0] > 100);
-		}
-		if (allied[sy][sx][0] < 100) {
-			/* Hit something */
-			audio.hit.play();
-			SetImage(sy, sx, 103, false);
-			var shipNumber = allied[sy][sx][1];
-			if (--alliedShips[shipNumber][1] == 0) {
-				SinkShip(allied, shipNumber, false);
-				audio.sink.play();
-				UpdateAlert("The enemy has sank your " + shipTypes[alliedShips[shipNumber][0]][0] + "!", 2000);
-				if (--alliedLives == 0) {
-					KnowYourEnemy();
-					UpdateAlert("You have been defeated!", 10000);
-					playflag = false;
+			if (!selected) {
+				/* 
+				Nothing found in 'shoot to kill' mode, so we're just taking potshots. 
+				Random shots are in a chequerboard pattern for maximum efficiency, and never twice in the same place
+				*/
+				do {
+					sy = Math.floor(Math.random() * gridY);
+					sx = Math.floor(Math.random() * gridX / 2) * 2 + sy % 2;
+				} while (allied[sy][sx][0] > 100);
+			}
+			if (allied[sy][sx][0] < 100) {
+				/* Hit something */
+				audio.hit.play();
+				SetImage(sy, sx, 103, false);
+				var shipNumber = allied[sy][sx][1];
+				if (--alliedShips[shipNumber][1] == 0) {
+					SinkShip(allied, shipNumber, false);
+					audio.sink.play();
+					UpdateAlert("The enemy has sank your " + shipTypes[alliedShips[shipNumber][0]][0] + "!", 2000);
+					if (--alliedLives == 0) {
+						KnowYourEnemy();
+						UpdateAlert("You have been defeated!", 10000);
+						playflag = false;
+					}
 				}
 			}
-		}
-		else {
-			/* Missed */
-			audio.splash.play();
-			SetImage(sy, sx, 102, false);
-		}
-
+			else {
+				/* Missed */
+				audio.splash.play();
+				SetImage(sy, sx, 102, false);
+			}
+		}, 1000);
+		
 		$('.enemy-ships').fadeTo( "slow", 1.0 );
 		$('.allied-ships').fadeTo( "slow", 0.7 );
 	}
