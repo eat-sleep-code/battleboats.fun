@@ -34,3 +34,17 @@ body
         width: 100vw;
     }
 }
+
+.game-container > div img
+{
+	border: 0;
+	height: 3.125vw;
+	margin: 0;
+	padding: 0;
+	width: 3.125vw;
+}
+
+.game-container > div a
+{
+	flex: 1 0 6.25%
+}
