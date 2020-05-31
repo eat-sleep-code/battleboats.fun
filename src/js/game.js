@@ -264,8 +264,7 @@ $(document).ready(function () {
 
 	function UpdateAlert(message, showFor) {
 		console.log(message, showFor);
-		$('.alert').html(message);
-		$('.alert').delay(showFor).html('');
+		$('.alert').empty().show().html(message).delay(3000).fadeOut(300);
 	}
 	
 
