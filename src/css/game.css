@@ -27,9 +27,10 @@ body
 
 .game-container
 {
-	width: 100%;
+	display: none;
 	height: 100%;
-    text-align: center;
+	text-align: center;
+	width: 100%;
 }
 
 .game-container > .game
