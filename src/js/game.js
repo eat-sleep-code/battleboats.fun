@@ -19,7 +19,7 @@ $(document).ready(function () {
 	var enemyShips = [];
 	var alliedLives = 0;
 	var enemylives = 0;
-	var playflag = true;
+	var playFlag = true;
 	var statusMessage = "";
 
 	/* Function to preload all the images, to prevent delays during play */
@@ -132,7 +132,7 @@ $(document).ready(function () {
 
 	/* Handler for clicking on the grid */
 	function CommenceFiring(y, x) {
-		if (playflag) {
+		if (playFlag) {
 			if (enemy[y][x][0] < 100) {
 				audio.hit.play();
 				SetImage(y, x, 103, true);
@@ -144,10 +144,10 @@ $(document).ready(function () {
 					UpdateStatus();
 					if (--enemylives == 0) {
 						UpdateAlert("You are victorious!", 10000);
-						playflag = false;
+						playFlag = false;
 					}
 				}
-				if (playflag) TorpedoesInTheWater();
+				if (playFlag) TorpedoesInTheWater();
 			}
 			else if (enemy[y][x][0] == 100) {
 				audio.splash.play();
@@ -174,27 +174,27 @@ $(document).ready(function () {
 						/* Explosion shown at this position */
 						if (allied[y][x][0] == 103) {
 							sx = x; sy = y;
-							var nup = (y > 0 && allied[y - 1][x][0] <= 100);
-							var ndn = (y < gridY - 1 && allied[y + 1][x][0] <= 100);
-							var nlt = (x > 0 && allied[y][x - 1][0] <= 100);
-							var nrt = (x < gridX - 1 && allied[y][x + 1][0] <= 100);
+							var shotUp = (y > 0 && allied[y - 1][x][0] <= 100);
+							var shotDown = (y < gridY - 1 && allied[y + 1][x][0] <= 100);
+							var shotLeft = (x > 0 && allied[y][x - 1][0] <= 100);
+							var shotRight = (x < gridX - 1 && allied[y][x + 1][0] <= 100);
 							if (pass == 0) {
 								/* On first pass look for two explosions in a row - next shot will be inline */
-								var yup = (y > 0 && allied[y - 1][x][0] == 103);
-								var ydn = (y < gridY - 1 && allied[y + 1][x][0] == 103);
-								var ylt = (x > 0 && allied[y][x - 1][0] == 103);
-								var yrt = (x < gridX - 1 && allied[y][x + 1][0] == 103);
-								if (nlt && yrt) { sx = x - 1; selected = true; }
-								else if (nrt && ylt) { sx = x + 1; selected = true; }
-								else if (nup && ydn) { sy = y - 1; selected = true; }
-								else if (ndn && yup) { sy = y + 1; selected = true; }
+								var doubleShotUp = (y > 0 && allied[y - 1][x][0] == 103);
+								var doubleShotDown = (y < gridY - 1 && allied[y + 1][x][0] == 103);
+								var doubleShotLeft = (x > 0 && allied[y][x - 1][0] == 103);
+								var doubleShotRight = (x < gridX - 1 && allied[y][x + 1][0] == 103);
+								if (shotLeft && doubleShotRight) { sx = x - 1; selected = true; }
+								else if (shotRight && doubleShotLeft) { sx = x + 1; selected = true; }
+								else if (shotUp && doubleShotDown) { sy = y - 1; selected = true; }
+								else if (shotDown && doubleShotUp) { sy = y + 1; selected = true; }
 							}
 							else {
 								/* Second pass look for single explosion - fire shots all around it */
-								if (nlt) { sx = x - 1; selected = true; }
-								else if (nrt) { sx = x + 1; selected = true; }
-								else if (nup) { sy = y - 1; selected = true; }
-								else if (ndn) { sy = y + 1; selected = true; }
+								if (shotLeft) { sx = x - 1; selected = true; }
+								else if (shotRight) { sx = x + 1; selected = true; }
+								else if (shotUp) { sy = y - 1; selected = true; }
+								else if (shotDown) { sy = y + 1; selected = true; }
 							}
 						}
 					}
@@ -202,8 +202,8 @@ $(document).ready(function () {
 			}
 			if (!selected) {
 				/* 
-				Nothing found in 'shoot to kill' mode, so we're just taking potshots. 
-				Random shots are in a chequerboard pattern for maximum efficiency, and never twice in the same place
+					Nothing found in 'shoot to kill' mode, so we're just taking potshots. 
+					Random shots are in a chequerboard pattern for maximum efficiency, and never twice in the same place
 				*/
 				do {
 					sy = Math.floor(Math.random() * gridY);
@@ -222,7 +222,7 @@ $(document).ready(function () {
 					if (--alliedLives == 0) {
 						KnowYourEnemy();
 						UpdateAlert("You have been defeated!", 10000);
-						playflag = false;
+						playFlag = false;
 					}
 				}
 			}
@@ -233,8 +233,8 @@ $(document).ready(function () {
 			}
 		}, 3000);
 
-		$('.enemy-ships').delay(3000).fadeTo(100, 1.0);
-		$('.allied-ships').delay(3000).fadeTo(100, 0.7);
+		$('.enemy-ships').delay(3000).fadeTo(2000, 1.0);
+		$('.allied-ships').delay(3000).fadeTo(2000, 0.7);
 	}
 
 	/* When whole ship is hit, show it using changed graphics */
