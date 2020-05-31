@@ -17,6 +17,7 @@ body
 .alert 
 {
 	color: rgba(255, 0, 0, 1.0);
+	margin: auto;
 	max-width: 1440px;
 	padding: 20px;
 	width: 100vw;
