@@ -118,7 +118,9 @@ $(document).ready(function () {
 		var x;
 		var innerHtml;
 		for (y = 0; y < gridY; ++y) {
+			console.log('Rendering Y', y);
 			for (x = 0; x < gridX; ++x) {
+				console.log('Rendering X', x);
 				if (isEnemy) {
 					innerHtml += '<a href="#" class="grid open" data-x="' + x + '" data-y="' + y + '"><img name="pc' + y + '_' + x + '" src="' + prefix + '100' + extension + '"></a>';
 				}
@@ -126,7 +128,6 @@ $(document).ready(function () {
 					innerHtml += '<a href="#" class="grid closed" data-x="' + x + '" data-y="' + y + '"><img name="ply' + y + '_' + x + '" src="' + prefix + allied[y][x][0] + extension + '"></a>';
 				}
 			}
-			document.write('<br>');
 		}
 		return innerHtml;
 	}
