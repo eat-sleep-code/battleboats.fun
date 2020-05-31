@@ -11,17 +11,26 @@ $(document).ready(function () {
 	/* Information used to describe ships */
 	var shipTypes = [["Minesweeper", 2, 4], ["Frigate", 3, 4], ["Cruiser", 4, 2], ["Battleship", 5, 1]];
 
-	var gridX = 16, gridY = 16;
-	var allied = [], enemy = [], alliedShips = [], enemyShips = [];
-	var alliedLives = 0, enemylives = 0, playflag = true, statusMessage = "";
+	var gridX = 16;
+	var gridY = 16;
+	var allied = [];
+	var enemy = [];
+	var alliedShips = [];
+	var enemyShips = [];
+	var alliedLives = 0;
+	var enemylives = 0;
+	var playflag = true;
+	var statusMessage = "";
 
 	/* Function to preload all the images, to prevent delays during play */
 	var preloaded = [];
 	function Preload() {
-		var i, ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 100, 101, 102, 103, 201, 202, 203, 204, 205, 206];
+		var i; 
+		var ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 100, 101, 102, 103, 201, 202, 203, 204, 205, 206];
 		window.status = "Getting our bearings...";
 		for (i = 0; i < ids.length; ++i) {
-			var img = new Image, name = prefix + ids[i] + extension;
+			var img = new Image;
+			var name = prefix + ids[i] + extension;
 			img.src = name;
 			preloaded[i] = img;
 		}
@@ -30,8 +39,9 @@ $(document).ready(function () {
 
 	/* Function to place the ships in the grid */
 	function ArmShips(isEnemy) {
-		var y, x;
-		grid = [];
+		var y
+		var x;
+		var grid = [];
 		for (y = 0; y < gridX; ++y) {
 			grid[y] = [];
 			for (x = 0; x < gridX; ++x)
