@@ -265,6 +265,7 @@ $(document).ready(function () {
 	function UpdateAlert(message, showFor) {
 		console.log(message, showFor);
 		$('.alert').html(message);
+		$('.alert').delay(showFor).html('');
 	}
 	
 
