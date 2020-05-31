@@ -14,7 +14,7 @@ body
 	overflow: hidden;
 }
 
-.alert 
+.alert-wrapper
 {
 	color: rgba(255, 0, 0, 1.0);
 	margin: auto;
