@@ -9,7 +9,7 @@ $(document).ready(function () {
 	var dead = [[[201, 203], [201, 202, 203], [201, 202, 202, 203], [201, 202, 202, 202, 203]], [[204, 206], [204, 205, 206], [204, 205, 205, 206], [204, 205, 205, 205, 206]]];
 
 	/* Information used to describe ships */
-	var shipTypes = [["Minesweeper", 2, 4], ["Frigate", 3, 4], ["Cruiser", 4, 2], ["Battleship", 5, 1]];
+	var shipTypes = [["patrol boat", 2, 4], ["frigate", 3, 4], ["cruiser", 4, 2], ["battleship", 5, 1]];
 
 	var gridX = 16;
 	var gridY = 16;
@@ -138,10 +138,10 @@ $(document).ready(function () {
 				var shipNumber = enemy[y][x][1];
 				if (--enemyShips[shipNumber][1] == 0) {
 					SinkShip(enemy, shipNumber, true);
-					UpdateAlert("You sank my " + shipTypes[enemyShips[shipNumber][0]][0] + "!", 2000);
+					UpdateAlert("You sank an enemy " + shipTypes[enemyShips[shipNumber][0]][0] + "!", 2000);
 					UpdateStatus();
 					if (--enemylives == 0) {
-						UpdateAlert("You win!", 10000);
+						UpdateAlert("You are victorious!", 10000);
 						playflag = false;
 					}
 				}
@@ -209,10 +209,10 @@ $(document).ready(function () {
 			var shipNumber = allied[sy][sx][1];
 			if (--alliedShips[shipNumber][1] == 0) {
 				SinkShip(allied, shipNumber, false);
-				UpdateAlert("I sank your " + shipTypes[alliedShips[shipNumber][0]][0] + "!", 2000);
+				UpdateAlert("The enemy has sank your " + shipTypes[alliedShips[shipNumber][0]][0] + "!", 2000);
 				if (--alliedLives == 0) {
 					KnowYourEnemy();
-					UpdateAlert("I win!", 10000);
+					UpdateAlert("You have been defeated!", 10000);
 					playflag = false;
 				}
 			}
