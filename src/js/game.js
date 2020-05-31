@@ -11,7 +11,7 @@ $(document).ready(function () {
 	/* Information used to describe ships */
 	var shipTypes = [["Minesweeper", 2, 4], ["Frigate", 3, 4], ["Cruiser", 4, 2], ["Battleship", 5, 1]];
 
-	var gridx = 16, gridy = 16;
+	var girdX = 16, girdY = 16;
 	var allied = [], enemy = [], alliedShips = [], enemyShips = [];
 	var alliedLives = 0, enemylives = 0, playflag = true, statusMessage = "";
 
@@ -32,9 +32,9 @@ $(document).ready(function () {
 	function ArmShips(isEnemy) {
 		var y, x;
 		grid = [];
-		for (y = 0; y < gridx; ++y) {
+		for (y = 0; y < girdX; ++y) {
 			grid[y] = [];
-			for (x = 0; x < gridx; ++x)
+			for (x = 0; x < girdX; ++x)
 				grid[y][x] = [100, -1, 0];
 		}
 
@@ -44,13 +44,13 @@ $(document).ready(function () {
 			var i;
 			for (i = 0; i < shipTypes[s][2]; ++i) {
 				var d = Math.floor(Math.random() * 2);
-				var len = shipTypes[s][1], lx = gridx, ly = gridy, dx = 0, dy = 0;
+				var len = shipTypes[s][1], lx = girdX, ly = girdY, dx = 0, dy = 0;
 				if (d == 0) {
-					lx = gridx - len;
+					lx = girdX - len;
 					dx = 1;
 				}
 				else {
-					ly = gridy - len;
+					ly = girdY - len;
 					dy = 1;
 				}
 				var x, y, ok;
@@ -105,12 +105,12 @@ $(document).ready(function () {
 	/* Function to insert HTML source for a grid */
 	function ShowGrid(isEnemy) {
 		var y, x;
-		for (y = 0; y < gridy; ++y) {
-			for (x = 0; x < gridx; ++x) {
+		for (y = 0; y < girdY; ++y) {
+			for (x = 0; x < girdX; ++x) {
 				if (isEnemy)
-					document.write('<a href="javascript:CommenceFiring(' + y + ',' + x + ');" class="quadrant open" data-x="' + x + '" data-y="' + y + '"><img name="pc' + y + '_' + x + '" src="' + prefix + '100' + extension + '"></a>');
+					document.write('<a href="#" class="grid open" data-x="' + x + '" data-y="' + y + '"><img name="pc' + y + '_' + x + '" src="' + prefix + '100' + extension + '"></a>');
 				else
-					document.write('<a href="#" class="coordinate closed" data-x="' + x + '" data-y="' + y + '"><img name="ply' + y + '_' + x + '" src="' + prefix + allied[y][x][0] + extension + '"></a>');
+					document.write('<a href="#" class="grid closed" data-x="' + x + '" data-y="' + y + '"><img name="ply' + y + '_' + x + '" src="' + prefix + allied[y][x][0] + extension + '"></a>');
 			}
 			document.write('<br>');
 		}
@@ -149,21 +149,21 @@ $(document).ready(function () {
 
 		/* Make two passes during 'shoot to kill' mode */
 		for (pass = 0; pass < 2; ++pass) {
-			for (y = 0; y < gridy && !selected; ++y) {
-				for (x = 0; x < gridx && !selected; ++x) {
+			for (y = 0; y < girdY && !selected; ++y) {
+				for (x = 0; x < girdX && !selected; ++x) {
 					/* Explosion shown at this position */
 					if (allied[y][x][0] == 103) {
 						sx = x; sy = y;
 						var nup = (y > 0 && allied[y - 1][x][0] <= 100);
-						var ndn = (y < gridy - 1 && allied[y + 1][x][0] <= 100);
+						var ndn = (y < girdY - 1 && allied[y + 1][x][0] <= 100);
 						var nlt = (x > 0 && allied[y][x - 1][0] <= 100);
-						var nrt = (x < gridx - 1 && allied[y][x + 1][0] <= 100);
+						var nrt = (x < girdX - 1 && allied[y][x + 1][0] <= 100);
 						if (pass == 0) {
 							/* On first pass look for two explosions in a row - next shot will be inline */
 							var yup = (y > 0 && allied[y - 1][x][0] == 103);
-							var ydn = (y < gridy - 1 && allied[y + 1][x][0] == 103);
+							var ydn = (y < girdY - 1 && allied[y + 1][x][0] == 103);
 							var ylt = (x > 0 && allied[y][x - 1][0] == 103);
-							var yrt = (x < gridx - 1 && allied[y][x + 1][0] == 103);
+							var yrt = (x < girdX - 1 && allied[y][x + 1][0] == 103);
 							if (nlt && yrt) { sx = x - 1; selected = true; }
 							else if (nrt && ylt) { sx = x + 1; selected = true; }
 							else if (nup && ydn) { sy = y - 1; selected = true; }
@@ -186,8 +186,8 @@ $(document).ready(function () {
 			   Random shots are in a chequerboard pattern for maximum efficiency, and never twice in the same place
 			*/
 			do {
-				sy = Math.floor(Math.random() * gridy);
-				sx = Math.floor(Math.random() * gridx / 2) * 2 + sy % 2;
+				sy = Math.floor(Math.random() * girdY);
+				sx = Math.floor(Math.random() * girdX / 2) * 2 + sy % 2;
 			} while (allied[sy][sx][0] > 100);
 		}
 		if (allied[sy][sx][0] < 100) {
@@ -213,8 +213,8 @@ $(document).ready(function () {
 	/* When whole ship is hit, show it using changed graphics */
 	function SinkShip(grid, shipNumber, isEnemy) {
 		var y, x;
-		for (y = 0; y < gridx; ++y) {
-			for (x = 0; x < gridx; ++x) {
+		for (y = 0; y < girdX; ++y) {
+			for (x = 0; x < girdX; ++x) {
 				if (grid[y][x][1] == shipNumber)
 					if (isEnemy) SetImage(y, x, enemy[y][x][2], true);
 					else SetImage(y, x, allied[y][x][2], false);
@@ -225,8 +225,8 @@ $(document).ready(function () {
 	/* Show location of all the enemy's ships - when allied has lost */
 	function KnowYourEnemy() {
 		var y, x;
-		for (y = 0; y < gridx; ++y) {
-			for (x = 0; x < gridx; ++x) {
+		for (y = 0; y < girdX; ++y) {
+			for (x = 0; x < girdX; ++x) {
 				if (enemy[y][x][0] == 103)
 					SetImage(y, x, enemy[y][x][2], true);
 				else if (enemy[y][x][0] < 100)
@@ -266,7 +266,7 @@ $(document).ready(function () {
 	setInterval("setStatus();", 500);
 
 
-	$(".quadrant").click(function(e) {
+	$(".grid").click(function(e) {
 		if ($(this).hasClass('open')) {
 			CommenceFiring($(this).data('y'), $(this).data('x'));
 		}
