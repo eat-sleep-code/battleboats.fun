@@ -114,7 +114,9 @@ $(document).ready(function () {
 
 	/* Function to insert HTML source for a grid */
 	function RenderGrid(isEnemy) {
-		var y, x;
+		var y;
+		var x;
+		var innerHtml;
 		for (y = 0; y < gridY; ++y) {
 			for (x = 0; x < gridX; ++x) {
 				if (isEnemy) {
