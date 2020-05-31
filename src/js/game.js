@@ -120,10 +120,10 @@ $(document).ready(function () {
 		for (y = 0; y < gridY; ++y) {
 			for (x = 0; x < gridX; ++x) {
 				if (isEnemy) {
-					innerHtml += '<a href="#" class="grid enemy" data-y="' + y + '" data-x="' + x + '"><img name="pc' + y + '_' + x + '" src="' + prefix + '100' + extension + '"></a>';
+					innerHtml += '<img name="pc' + y + '_' + x + '" src="' + prefix + '100' + extension + '" class="grid enemy" data-y="' + y + '" data-x="' + x + '">';
 				}
 				else {
-					innerHtml += '<a href="#" class="grid allied" data-y="' + y + '" data-x="' + x + '"><img name="ply' + y + '_' + x + '" src="' + prefix + allied[y][x][0] + extension + '"></a>';
+					innerHtml += '<img name="ply' + y + '_' + x + '" src="' + prefix + allied[y][x][0] + extension + '" class="grid allied" data-y="' + y + '" data-x="' + x + '">';
 				}
 			}
 		}
