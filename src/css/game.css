@@ -43,14 +43,15 @@ body
 .game-container .allied-ships
 {
 	display: flex;
+	flex-wrap: wrap;
 	max-width: 700px;
 }
 
 .game-container > div img
 {
 	border: 0;
-	display: inline-block;
-	width: calc(100% - 50% / 16);
+	display: block;
+	width: calc(100% / 16);
 	margin: 0;
 	padding: 0;
 }

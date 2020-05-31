@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	var prefix = "batt";
+	var prefix = "images/batt";
 	var extension = ".gif";
 
 	/* Information used to draw the ships */
