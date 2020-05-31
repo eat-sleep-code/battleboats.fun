@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap');
+
 body,
 html
 { 
@@ -10,7 +12,7 @@ body
 {
     background: rgba(0, 0, 0, 1.0);
     background-image: url('/images/background.jpg');
-    font-family: Verdana, sans-serif;
+    font-family: 'Teko', sans-serif;
 	overflow: hidden;
 }
 
@@ -29,7 +31,7 @@ body
 	border-radius: 3px;
 	color: rgba(255, 255, 255, 1.0);
 	display: none;
-	height: 32px;
+	padding: 8px 0;
 	margin: auto 19px;
 	text-align: center;
 	width: 100%;
@@ -94,6 +96,7 @@ body
 {
 	color: rgba(255, 255, 255, 0.9);
 	display: inline-block;
-	font-size: 0.85em;
-	margin: 10px; 
+	margin: 10px 1px;
+	text-align: left;
+	width: 100%; 
 }
