@@ -1,6 +1,6 @@
 $(document).ready(function () {
-	var prefix = "images/batt";
-	var extension = ".gif";
+	var prefix = "images/BATT";
+	var extension = ".GIF";
 
 	/* Information used to draw the ships */
 	var ship = [[[1, 5], [1, 2, 5], [1, 2, 3, 5], [1, 2, 3, 4, 5]], [[6, 10], [6, 7, 10], [6, 7, 8, 10], [6, 7, 8, 9, 10]]];
