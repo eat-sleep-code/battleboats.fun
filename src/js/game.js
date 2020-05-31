@@ -94,26 +94,29 @@ $(document).ready(function () {
 	function SetImage(y, x, id, isEnemy) {
 		if (isEnemy) {
 			enemy[y][x][0] = id;
-			document.images["pc" + y + "_" + x].src = "batt" + id + ".gif";
+			document.images["pc" + y + "_" + x].src = prefix + id + extension;
 		}
 		else {
 			allied[y][x][0] = id;
-			document.images["ply" + y + "_" + x].src = "batt" + id + ".gif";
+			document.images["ply" + y + "_" + x].src = prefix + id + extension;
 		}
 	}
 
 	/* Function to insert HTML source for a grid */
-	function ShowGrid(isEnemy) {
+	function RenderGrid(isEnemy) {
 		var y, x;
 		for (y = 0; y < girdY; ++y) {
 			for (x = 0; x < girdX; ++x) {
-				if (isEnemy)
-					document.write('<a href="#" class="grid open" data-x="' + x + '" data-y="' + y + '"><img name="pc' + y + '_' + x + '" src="' + prefix + '100' + extension + '"></a>');
-				else
-					document.write('<a href="#" class="grid closed" data-x="' + x + '" data-y="' + y + '"><img name="ply' + y + '_' + x + '" src="' + prefix + allied[y][x][0] + extension + '"></a>');
+				if (isEnemy) {
+					innerHtml += '<a href="#" class="grid open" data-x="' + x + '" data-y="' + y + '"><img name="pc' + y + '_' + x + '" src="' + prefix + '100' + extension + '"></a>';
+				}
+				else {
+					innerHtml += '<a href="#" class="grid closed" data-x="' + x + '" data-y="' + y + '"><img name="ply' + y + '_' + x + '" src="' + prefix + allied[y][x][0] + extension + '"></a>';
+				}
 			}
 			document.write('<br>');
 		}
+		return innerHtml;
 	}
 
 	/* Handler for clicking on the grid */
@@ -256,12 +259,8 @@ $(document).ready(function () {
 	Preload();
 	allied = ArmShips(false);
 	enemy = ArmShips(true);
-	document.write("<center><table><tr><td align=center><p class='heading'>Enemy Fleet</p></td>" +
-		"<td align=center><p class='heading'>Allied Fleet</p></td></tr><tr><td>");
-	ShowGrid(true);
-	document.write("</td><td>");
-	ShowGrid(false);
-	document.write("</td></tr></table></center>");
+	$('.enemy-ships').html(RenderGrid(true));
+	$('.allied-ships').html(RenderGrid(false));
 	UpdateStatus();
 	setInterval("setStatus();", 500);
 
