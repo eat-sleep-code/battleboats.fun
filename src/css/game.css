@@ -91,9 +91,19 @@ body
 	cursor: none;
 	display: block;
 	height: 100%;
-	width: calc(100% / 16 - 1.05px);
+	width: calc(100% / 16 - 1.08px);
 	margin: 0;
 	padding: 0;
+}
+
+@media (max-width: 991.98px) 
+{
+    .game-container .enemy-ships img,
+	.game-container .allied-ships img
+    {
+		height: calc(6vw - 2px);
+		width: calc(6vw - 2px);
+    }
 }
 
 .game-container .enemy-ships img[data-x="0"],
@@ -108,14 +118,10 @@ body
 	border-top: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-@media (max-width: 991.98px) 
+.game-container .enemy-ships.active-grid,
+.game-container .allied-ships.active-grid
 {
-    .game-container .enemy-ships img,
-	.game-container .allied-ships img
-    {
-		height: calc(6vw - 2px);
-		width: calc(6vw - 2px);
-    }
+	border-top: 2px solid rgba(255, 255, 255, 1.0);
 }
 
 .grid-wrapper label
