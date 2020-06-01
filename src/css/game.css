@@ -14,6 +14,7 @@ body
 	background-image: url('/images/background.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
+	cursor: none;
     font-family: 'Teko', sans-serif;
 	overflow: hidden;
 }
@@ -33,12 +34,17 @@ body
 	border-radius: 3px;
 	color: rgba(255, 255, 255, 1.0);
 	display: none;
+	font-size: 1.2em;
 	padding: 8px 0;
 	margin: auto 19px;
 	text-align: center;
 	width: 100%;
 }
 
+.grid-wrapper
+{
+	margin: 2%;
+}
 
 .game-container
 {
@@ -70,25 +76,42 @@ body
 .game-container .enemy-ships,
 .game-container .allied-ships
 {
+	border: 2px solid transparent;
 	display: flex;
 	flex-wrap: wrap;
 	max-width: 680px;
 }
 
-.game-container > .game img
+.game-container .enemy-ships img,
+.game-container .allied-ships img
 {
-	border: 1px dotted rgba(255, 255, 255, 0.5);
-	border-radius: 3px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+	border-right: 1px solid rgba(255, 255, 255, 0.5);
+	border-radius: 0;
+	cursor: none;
 	display: block;
 	height: 100%;
-	width: calc(100% / 16 - 2px);
+	width: calc(100% / 16 - 1.05px);
 	margin: 0;
 	padding: 0;
 }
 
-@media (max-width: 576px) 
+.game-container .enemy-ships img[data-x="0"],
+.game-container .allied-ships img[data-x="0"]
 {
-    .game-container > .game img
+	border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.game-container .enemy-ships img[data-y="0"],
+.game-container .allied-ships img[data-y="0"]
+{
+	border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 991.98px) 
+{
+    .game-container .enemy-ships img,
+	.game-container .allied-ships img
     {
 		height: calc(6vw - 2px);
 		width: calc(6vw - 2px);

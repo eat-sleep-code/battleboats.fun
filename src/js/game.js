@@ -169,9 +169,9 @@ $(document).ready(function () {
 
 	/* Function to make the enemy's move. Note that the enemy does not cheat, oh no! */
 	function TorpedoesInTheWater() {
-		$('.enemy-ships').fadeTo(1000, 0.7);
-		$('.allied-ships').fadeTo(1000, 1.0);
-
+		$('.allied-ships').addClass('active-grid');
+		$('.enemy-ships').removeClass('active-grid');
+		
 		window.setTimeout(function(){
 			var x, y, pass;
 			var sx, sy;
@@ -252,8 +252,8 @@ $(document).ready(function () {
 			}
 		}, 3000);
 
-		$('.enemy-ships').delay(4000).fadeTo(1000, 1.0);
-		$('.allied-ships').delay(4000).fadeTo(1000, 0.7);
+		$('.enemy-ships').addClass('active-grid');
+		$('.allied-ships').removeClass('active-grid');
 	}
 
 	/* When whole ship is hit, show it using changed graphics */
@@ -307,9 +307,10 @@ $(document).ready(function () {
 	enemy = ArmShips(true);
 	$('.enemy-ships').html(RenderGrid(true));
 	$('.allied-ships').html(RenderGrid(false));
-	$('.enemy-ships').fadeTo(100, 1.0);
-	$('.allied-ships').fadeTo(100, 0.7);
 	$('.game-container').show();
+	
+	$('.enemy-ships').addClass('active-grid');
+	$('.allied-ships').removeClass('active-grid');
 	UpdateStatus();
 	//setInterval(window.status = statusMessage, 500);
 
