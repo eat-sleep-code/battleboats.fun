@@ -1,6 +1,6 @@
 $(document).ready(function () {
-	var prefix = "images/BATT";
-	var extension = ".GIF";
+	var prefix = "images/battle";
+	var extension = ".svg";
 
 	/* Information used to draw the ships */
 	var ship = [[[1, 5], [1, 2, 5], [1, 2, 3, 5], [1, 2, 3, 4, 5]], [[6, 10], [6, 7, 10], [6, 7, 8, 10], [6, 7, 8, 9, 10]]];
@@ -134,11 +134,17 @@ $(document).ready(function () {
 	function CommenceFiring(y, x) {
 		if (playFlag) {
 			if (enemy[y][x][0] < 100) {
-				audio.hit.play();
+				try {
+					audio.hit.play();
+				}
+				catch(error) {}
 				SetImage(y, x, 103, true);
 				var shipNumber = enemy[y][x][1];
 				if (--enemyShips[shipNumber][1] == 0) {
-					audio.sink.play();
+					try {
+						audio.sink.play();
+					}
+					catch(error) {}
 					SinkShip(enemy, shipNumber, true);
 					UpdateAlert("You sank an enemy " + shipTypes[enemyShips[shipNumber][0]][0] + "!", 2000);
 					UpdateStatus();
@@ -150,7 +156,11 @@ $(document).ready(function () {
 				if (playFlag) TorpedoesInTheWater();
 			}
 			else if (enemy[y][x][0] == 100) {
-				audio.splash.play();
+				try
+				{
+					audio.splash.play();
+				}
+				catch(error) {}	
 				SetImage(y, x, 102, true);
 				TorpedoesInTheWater();
 			}
@@ -159,8 +169,8 @@ $(document).ready(function () {
 
 	/* Function to make the enemy's move. Note that the enemy does not cheat, oh no! */
 	function TorpedoesInTheWater() {
-		$('.enemy-ships').fadeTo(2000, 0.7);
-		$('.allied-ships').fadeTo(2000, 1.0);
+		$('.enemy-ships').fadeTo(1000, 0.7);
+		$('.allied-ships').fadeTo(1000, 1.0);
 
 		window.setTimeout(function(){
 			var x, y, pass;
@@ -212,12 +222,18 @@ $(document).ready(function () {
 			}
 			if (allied[sy][sx][0] < 100) {
 				/* Hit something */
-				audio.hit.play();
+				try {
+					audio.hit.play();
+				}
+				catch(error) {}
 				SetImage(sy, sx, 103, false);
 				var shipNumber = allied[sy][sx][1];
 				if (--alliedShips[shipNumber][1] == 0) {
 					SinkShip(allied, shipNumber, false);
-					audio.sink.play();
+					try {
+						audio.sink.play();
+					}
+					catch(error) {}
 					UpdateAlert("The enemy has sank your " + shipTypes[alliedShips[shipNumber][0]][0] + "!", 2000);
 					if (--alliedLives == 0) {
 						KnowYourEnemy();
@@ -228,13 +244,16 @@ $(document).ready(function () {
 			}
 			else {
 				/* Missed */
-				audio.splash.play();
+				try {
+					audio.splash.play();
+				}
+				catch(error) {}
 				SetImage(sy, sx, 102, false);
 			}
 		}, 3000);
 
-		$('.enemy-ships').delay(3000).fadeTo(2000, 1.0);
-		$('.allied-ships').delay(3000).fadeTo(2000, 0.7);
+		$('.enemy-ships').delay(4000).fadeTo(1000, 1.0);
+		$('.allied-ships').delay(4000).fadeTo(1000, 0.7);
 	}
 
 	/* When whole ship is hit, show it using changed graphics */
@@ -296,7 +315,7 @@ $(document).ready(function () {
 
 
 	$(".grid").click(function(e) {
-		if ($(this).hasClass('enemy')) {
+		if ($(this).hasClass('enemy') && playFlag == true) {
 			CommenceFiring($(this).data('y'), $(this).data('x'));
 		}
 		e.preventDefault();
