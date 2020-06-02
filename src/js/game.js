@@ -296,9 +296,9 @@ $(document).ready(function () {
 		window.status = statusMessage;
 	}
 
-	function UpdateAlert(message, showFor) {
+	function UpdateAlert(message, showFor = 3000) {
 		//console.log(message, showFor);
-		$('.alert').empty().show().html(message).delay(3000).fadeOut(300);
+		$('.alert').empty().show().html(message).delay(showFor).fadeOut(300);
 	}
 	
 
@@ -317,7 +317,8 @@ $(document).ready(function () {
 
 
 	$(".grid").click(function(e) {
-		if ($(this).hasClass('enemy') && playFlag == true) {
+		if ($(this).hasClass('enemy') && $('.enemy-ships').hasClass('active-grid') && playFlag == true) {
+			console.log("Firing...");
 			CommenceFiring($(this).data('y'), $(this).data('x'));
 		}
 		e.preventDefault();
