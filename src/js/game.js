@@ -169,8 +169,9 @@ $(document).ready(function () {
 
 	/* Function to make the enemy's move. Note that the enemy does not cheat, oh no! */
 	function TorpedoesInTheWater() {
-		$('.allied-ships').addClass('active-grid');
 		$('.enemy-ships').removeClass('active-grid');
+		$('.allied-ships').addClass('active-grid');
+		
 		
 		window.setTimeout(function(){
 			var x, y, pass;
@@ -308,7 +309,7 @@ $(document).ready(function () {
 	$('.enemy-ships').html(RenderGrid(true));
 	$('.allied-ships').html(RenderGrid(false));
 	$('.game-container').show();
-	
+
 	$('.enemy-ships').addClass('active-grid');
 	$('.allied-ships').removeClass('active-grid');
 	UpdateStatus();
