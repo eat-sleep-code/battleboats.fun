@@ -321,6 +321,5 @@ $(document).ready(function () {
 			console.log("Firing...");
 			CommenceFiring($(this).data('y'), $(this).data('x'));
 		}
-		e.preventDefault();
 	});
 });
