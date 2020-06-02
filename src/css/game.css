@@ -105,6 +105,16 @@ body
     }
 }
 
+@media (max-width: 575.98px) 
+{
+    .game-container .enemy-ships img,
+	.game-container .allied-ships img
+    {
+		height: calc(6vw - 2px);
+		width: calc(6vw - 2px);
+    }
+}
+
 .game-container .enemy-ships img[data-x="0"],
 .game-container .allied-ships img[data-x="0"]
 {
