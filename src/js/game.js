@@ -299,7 +299,10 @@ $(document).ready(function () {
 		$('.logo').hide();
 		$('.alert').empty().show().html(message).delay(showFor).fadeOut(300);
 		if (reloadAfter == true) {
-			StartGame();
+			window.setTimeout(function(){
+				$('.logo').show();
+				StartGame();
+			}, showFor + 1);
 		}
 	}
 	
@@ -316,6 +319,7 @@ $(document).ready(function () {
 		$('.allied-ships').removeClass('active-grid');
 		
 		$('.game-container').show();
+		ga('send', 'event', 'Game', 'Win', 'Player');
 		UpdateStatus();
 	}
 
