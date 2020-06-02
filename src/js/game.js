@@ -300,10 +300,12 @@ $(document).ready(function () {
 		$('.logo').hide();
 		$('.alert').empty().show().html(message).delay(showFor).fadeOut(300);
 		if (reloadAfter == true) {
+			$('.enemy-ships').removeClass('active-grid');
+			$('.allied-ships').removeClass('active-grid');
 			window.setTimeout(function(){
 				$('.logo').show();
 				StartGame();
-			}, showFor + 1000);
+			}, showFor/2);
 		}
 	}
 	
