@@ -38,7 +38,7 @@ body
 	padding: 8px 0;
 	margin: auto 19px;
 	text-align: center;
-	width: 100%;
+	width: calc(100vw - 40px);
 }
 
 .grid-wrapper
