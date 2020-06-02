@@ -251,10 +251,10 @@ $(document).ready(function () {
 				catch(error) {}
 				SetImage(sy, sx, 102, false);
 			}
-		}, 3000);
 
-		$('.enemy-ships').addClass('active-grid');
-		$('.allied-ships').removeClass('active-grid');
+			$('.enemy-ships').addClass('active-grid');
+			$('.allied-ships').removeClass('active-grid');
+		}, 3000);
 	}
 
 	/* When whole ship is hit, show it using changed graphics */
