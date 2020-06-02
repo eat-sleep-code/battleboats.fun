@@ -120,7 +120,7 @@ body
 .game-container .enemy-ships.active-grid,
 .game-container .allied-ships.active-grid
 {
-	border-top: 2px solid rgba(255, 255, 255, 1.0);
+	border: 2px solid rgba(255, 255, 255, 1.0);
 }
 
 .game-container .enemy-ships.active-grid
