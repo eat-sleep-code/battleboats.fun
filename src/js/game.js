@@ -314,7 +314,7 @@ $(document).ready(function () {
 
 	$(".enemy").click(function(e) {
 		if ($('.enemy-ships').hasClass('active-grid') && playFlag == true) {
-			console.log("Firing...");
+			//console.log("Firing...");
 			CommenceFiring($(this).data('y'), $(this).data('x'));
 		}
 	});
