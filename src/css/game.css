@@ -15,6 +15,7 @@ body
 	background-repeat: no-repeat;
 	background-size: cover;
 	font-family: 'Teko', sans-serif;
+	min-height: 100vh;
 	overflow: hidden;
 }
 
