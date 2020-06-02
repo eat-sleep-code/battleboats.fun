@@ -146,6 +146,7 @@ $(document).ready(function () {
 					UpdateStatus();
 					if (--enemylives == 0) {
 						UpdateAlert("You are victorious!", 10000);
+						ga('send', 'event', 'Game', 'Win', 'Player');
 						playFlag = false;
 					}
 				}
@@ -231,6 +232,7 @@ $(document).ready(function () {
 					if (--alliedLives == 0) {
 						KnowYourEnemy();
 						UpdateAlert("You have been defeated!", 10000);
+						ga('send', 'event', 'Game', 'Win', 'Computer');
 						playFlag = false;
 					}
 				}
