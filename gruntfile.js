@@ -11,9 +11,10 @@ module.exports = function (grunt) {
 			},
 			scripts: {
 				src: [
+					'src/js/analytics.js',
 					'src/js/audio.js',
-					'src/js/game.js',
-					'src/js/analytics.js'
+					'src/js/game.js'
+					
 				],
 				dest: 'tmp/battleboats.concat.js',
 			},
