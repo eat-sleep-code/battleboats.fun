@@ -171,7 +171,7 @@ $(document).ready(function () {
 	function TorpedoesInTheWater() {
 		$('.enemy-ships').removeClass('active-grid');
 		$('.allied-ships').addClass('active-grid');
-		
+		console.log("Enemy round underway...");
 		
 		window.setTimeout(function(){
 			var x, y, pass;
@@ -251,7 +251,7 @@ $(document).ready(function () {
 				catch(error) {}
 				SetImage(sy, sx, 102, false);
 			}
-
+			console.log("Enemy round complete...");
 			$('.enemy-ships').addClass('active-grid');
 			$('.allied-ships').removeClass('active-grid');
 		}, 3000);
