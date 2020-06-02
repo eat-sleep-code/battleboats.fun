@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300,500&display=swap');
 
 body,
 html
@@ -16,16 +16,24 @@ body
 	background-size: cover;
 	font-family: 'Teko', sans-serif;
 	min-height: 100vh;
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
-.alert-wrapper
+.top-container
 {
-	height: 32px;
+	height: 62px;
 	margin: auto;
 	max-width: 1440px;
 	padding: 10px 0;
 	width: 100vw;
+}
+
+.logo 
+{
+	color: rgba(84, 84, 84, 1.0);
+	font-size: 4em;
+	font-weight: 300;
+    text-shadow: -1px -1px 0 rgba(228, 228, 228, 0.5), 1px -1px 0 rgba(228, 228, 228, 0.5), -1px 1px 0 rgba(228, 229, 228, 0.5), 1px 1px 0 rgba(228, 228, 228, 0.5);
 }
 
 .alert

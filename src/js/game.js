@@ -294,6 +294,7 @@ $(document).ready(function () {
 
 	function UpdateAlert(message, showFor = 3000) {
 		//console.log(message, showFor);
+		$('.logo').hide();
 		$('.alert').empty().show().html(message).delay(showFor).fadeOut(300);
 	}
 	
