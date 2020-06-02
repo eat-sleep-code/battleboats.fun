@@ -23,8 +23,8 @@ $(document).ready(function () {
 	var statusMessage = "";
 
 	/* Function to preload all the images, to prevent delays during play */
-	var preloaded = [];
-	function Preload() {
+	var preloadedImages = [];
+	function PreloadImages() {
 		var i; 
 		var ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 100, 101, 102, 103, 201, 202, 203, 204, 205, 206];
 		window.status = "Getting our bearings...";
@@ -32,7 +32,7 @@ $(document).ready(function () {
 			var img = new Image;
 			var name = prefix + ids[i] + extension;
 			img.src = name;
-			preloaded[i] = img;
+			preloadedImages[i] = img;
 		}
 		window.status = "";
 	}
@@ -145,7 +145,7 @@ $(document).ready(function () {
 					UpdateAlert("You sank an enemy " + shipTypes[enemyShips[shipNumber][0]][0] + "!", 3000);
 					UpdateStatus();
 					if (--enemylives == 0) {
-						UpdateAlert("You are victorious!", 10000);
+						UpdateAlert("You are victorious!", 10000, true);
 						ga('send', 'event', 'Game', 'Win', 'Player');
 						playFlag = false;
 					}
@@ -231,7 +231,7 @@ $(document).ready(function () {
 					UpdateAlert("The enemy has sank your " + shipTypes[alliedShips[shipNumber][0]][0] + "!", 3000);
 					if (--alliedLives == 0) {
 						KnowYourEnemy();
-						UpdateAlert("You have been defeated!", 10000);
+						UpdateAlert("You have been defeated!", 10000, true);
 						ga('send', 'event', 'Game', 'Win', 'Computer');
 						playFlag = false;
 					}
@@ -294,26 +294,32 @@ $(document).ready(function () {
 		window.status = statusMessage;
 	}
 
-	function UpdateAlert(message, showFor = 3000) {
+	function UpdateAlert(message, showFor = 3000, reloadAfter = false) {
 		//console.log(message, showFor);
 		$('.logo').hide();
 		$('.alert').empty().show().html(message).delay(showFor).fadeOut(300);
+		if (reloadAfter == true) {
+			StartGame();
+		}
 	}
 	
 
 	/* Start the game! */
-	Preload();
-	allied = ArmShips(false);
-	enemy = ArmShips(true);
-	$('.enemy-ships').html(RenderGrid(true));
-	$('.allied-ships').html(RenderGrid(false));
-	
-	$('.enemy-ships').addClass('active-grid');
-	$('.allied-ships').removeClass('active-grid');
-	
-	$('.game-container').show();
-	UpdateStatus();
-	
+	function StartGame() {
+		PreloadImages();
+		allied = ArmShips(false);
+		enemy = ArmShips(true);
+		$('.enemy-ships').html(RenderGrid(true));
+		$('.allied-ships').html(RenderGrid(false));
+		
+		$('.enemy-ships').addClass('active-grid');
+		$('.allied-ships').removeClass('active-grid');
+		
+		$('.game-container').show();
+		UpdateStatus();
+	}
+
+	StartGame();
 
 	$(".enemy").click(function(e) {
 		if ($('.enemy-ships').hasClass('active-grid') && playFlag == true) {

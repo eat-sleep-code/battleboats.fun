@@ -28,11 +28,9 @@ body
 	width: 100vw;
 }
 
-.logo 
+.logo img 
 {
-	color: rgba(84, 84, 84, 1.0);
-	font-size: 4em;
-    text-shadow: -1px -1px 0 rgba(228, 228, 228, 0.5), 1px -1px 0 rgba(228, 228, 228, 0.5), -1px 1px 0 rgba(228, 229, 228, 0.5), 1px 1px 0 rgba(228, 228, 228, 0.5);
+    max-width: calc(100vw - 20px);
 }
 
 .alert
