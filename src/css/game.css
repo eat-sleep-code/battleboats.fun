@@ -24,7 +24,7 @@ body
 	height: 32px;
 	margin: auto;
 	max-width: 1440px;
-	padding: 20px;
+	padding: 10px 0;
 	width: 100vw;
 }
 
@@ -34,11 +34,11 @@ body
 	border-radius: 3px;
 	color: rgba(255, 255, 255, 1.0);
 	display: none;
-	font-size: 1.2em;
+	font-size: 1.3em;
 	padding: 8px 0;
 	margin: auto 19px;
 	text-align: center;
-	width: calc(100vw - 40px);
+	max-width: 360px;
 }
 
 .grid-wrapper

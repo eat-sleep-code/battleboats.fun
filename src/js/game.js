@@ -141,10 +141,6 @@ $(document).ready(function () {
 				SetImage(y, x, 103, true);
 				var shipNumber = enemy[y][x][1];
 				if (--enemyShips[shipNumber][1] == 0) {
-					try {
-						audio.sink.play();
-					}
-					catch(error) {}
 					SinkShip(enemy, shipNumber, true);
 					UpdateAlert("You sank an enemy " + shipTypes[enemyShips[shipNumber][0]][0] + "!", 2000);
 					UpdateStatus();
@@ -231,10 +227,6 @@ $(document).ready(function () {
 				var shipNumber = allied[sy][sx][1];
 				if (--alliedShips[shipNumber][1] == 0) {
 					SinkShip(allied, shipNumber, false);
-					try {
-						audio.sink.play();
-					}
-					catch(error) {}
 					UpdateAlert("The enemy has sank your " + shipTypes[alliedShips[shipNumber][0]][0] + "!", 2000);
 					if (--alliedLives == 0) {
 						KnowYourEnemy();
@@ -259,6 +251,10 @@ $(document).ready(function () {
 
 	/* When whole ship is hit, show it using changed graphics */
 	function SinkShip(grid, shipNumber, isEnemy) {
+		try {
+			audio.sink.play();
+		}
+		catch(error) {}
 		var y, x;
 		for (y = 0; y < gridX; ++y) {
 			for (x = 0; x < gridX; ++x) {
@@ -284,7 +280,7 @@ $(document).ready(function () {
 
 	/* Show how many ships enemy has left */
 	function UpdateStatus() {
-		var f = false, i, s = "enemy has ";
+		var f = false, i, s = "The enemy has ";
 		for (i = 0; i < enemyShips.length; ++i) {
 			if (enemyShips[i][1] > 0) {
 				if (f) s = s + ", "; else f = true;
