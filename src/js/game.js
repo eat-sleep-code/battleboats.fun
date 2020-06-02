@@ -304,13 +304,13 @@ $(document).ready(function () {
 	enemy = ArmShips(true);
 	$('.enemy-ships').html(RenderGrid(true));
 	$('.allied-ships').html(RenderGrid(false));
-	$('.game-container').show();
-
+	
 	$('.enemy-ships').addClass('active-grid');
 	$('.allied-ships').removeClass('active-grid');
+	
+	$('.game-container').show();
 	UpdateStatus();
-	//setInterval(window.status = statusMessage, 500);
-
+	
 
 	$(".enemy").click(function(e) {
 		if ($('.enemy-ships').hasClass('active-grid') && playFlag == true) {
