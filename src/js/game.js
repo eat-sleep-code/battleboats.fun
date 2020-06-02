@@ -20,6 +20,7 @@ $(document).ready(function () {
 	var alliedLives = 0;
 	var enemylives = 0;
 	var playFlag = true;
+	var round = 0;
 	var statusMessage = "";
 
 	/* Function to preload all the images, to prevent delays during play */
@@ -319,7 +320,10 @@ $(document).ready(function () {
 		$('.allied-ships').removeClass('active-grid');
 		
 		$('.game-container').show();
-		ga('send', 'event', 'Game', 'Win', 'Player');
+
+		round = round + 1;
+		ga('send', 'event', 'Game', 'Start', round);
+		
 		UpdateStatus();
 	}
 
