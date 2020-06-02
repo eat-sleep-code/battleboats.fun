@@ -316,8 +316,8 @@ $(document).ready(function () {
 	//setInterval(window.status = statusMessage, 500);
 
 
-	$(".grid").click(function(e) {
-		if ($(this).hasClass('enemy') && $('.enemy-ships').hasClass('active-grid') && playFlag == true) {
+	$(".enemy").click(function(e) {
+		if ($('.enemy-ships').hasClass('active-grid') && playFlag == true) {
 			console.log("Firing...");
 			CommenceFiring($(this).data('y'), $(this).data('x'));
 		}
