@@ -302,7 +302,7 @@ $(document).ready(function () {
 			window.setTimeout(function(){
 				$('.logo').show();
 				StartGame();
-			}, showFor + 1);
+			}, showFor + 1000);
 		}
 	}
 	
