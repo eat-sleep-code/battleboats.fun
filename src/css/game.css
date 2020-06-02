@@ -85,8 +85,8 @@ body
 .game-container .enemy-ships img,
 .game-container .allied-ships img
 {
-	border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-	border-right: 1px solid rgba(255, 255, 255, 0.5);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+	border-right: 1px solid rgba(255, 255, 255, 0.3);
 	border-radius: 0;
 	display: block;
 	height: 100%;
@@ -108,13 +108,13 @@ body
 .game-container .enemy-ships img[data-x="0"],
 .game-container .allied-ships img[data-x="0"]
 {
-	border-left: 1px solid rgba(255, 255, 255, 0.5);
+	border-left: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .game-container .enemy-ships img[data-y="0"],
 .game-container .allied-ships img[data-y="0"]
 {
-	border-top: 1px solid rgba(255, 255, 255, 0.5);
+	border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .game-container .enemy-ships.active-grid,
