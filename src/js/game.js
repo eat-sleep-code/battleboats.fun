@@ -147,7 +147,10 @@ $(document).ready(function () {
 					UpdateStatus();
 					if (--enemylives == 0) {
 						UpdateAlert("You are victorious!", 10000, true);
-						ga('send', 'event', 'Game', 'Win', 'Player');
+						try {
+							gtag('event', 'Win', {'event_category' : 'Game', 'event_label' : 'Player'});
+						}
+						catch(error) {}	
 						playFlag = false;
 					}
 				}
@@ -233,7 +236,10 @@ $(document).ready(function () {
 					if (--alliedLives == 0) {
 						KnowYourEnemy();
 						UpdateAlert("You have been defeated!", 10000, true);
-						ga('send', 'event', 'Game', 'Win', 'Computer');
+						try {
+							gtag('event', 'Win', {'event_category' : 'Game', 'event_label' : 'Computer'});
+						}
+						catch(error) {}	
 						playFlag = false;
 					}
 				}
@@ -324,8 +330,10 @@ $(document).ready(function () {
 		$('.game-container').show();
 
 		round = round + 1;
-		ga('send', 'event', 'Game', 'Start', round);
-		
+		try {
+			gtag('event', 'Start', {'event_category' : 'Game', 'event_label' : round});
+		}
+		catch(error) {}			
 		UpdateStatus();
 	}
 
