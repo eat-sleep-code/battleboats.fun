@@ -1,11 +1,8 @@
 {
-  "name": "invaders",
-  "version": "2020.05.30.16",
+  "name": "battle-boats",
+  "version": "2020.06.02.20",
   "description": "Battle Boats",
   "main": "index.html",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/eat-sleep-code/battleboats.fun.git"
@@ -28,9 +25,9 @@
   "keywords": [
     "game",
     "javascript",
-    "alien",
-    "invasion",
-    "space"
+    "battle boats",
+    "battleship",
+    "naval"
   ],
   "author": " <eat-sleep-code />",
   "license": "MIT",
