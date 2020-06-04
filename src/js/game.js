@@ -328,8 +328,8 @@ $(document).ready(function () {
 		$('.allied-ships').removeClass('active-grid');
 		
 		$('.game-container').show();
-
 		round = round + 1;
+		playFlag = true;
 		try {
 			gtag('event', 'Start', {'event_category' : 'Game', 'event_label' : round});
 		}
@@ -343,6 +343,21 @@ $(document).ready(function () {
 		if ($('.enemy-ships').hasClass('active-grid') && playFlag == true) {
 			//console.log("Firing...");
 			CommenceFiring($(this).data('y'), $(this).data('x'));
+		}
+	});
+
+
+	// Discourage cheaters...
+	document.addEventListener("contextmenu", function(e){
+		e.preventDefault();
+	}, false);
+
+	$(document).keydown(function (event) {
+		if (event.keyCode == 123) { 
+			return false; // Prevent F12
+		} 
+		else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {        
+			return false; // Prevent Ctrl + Shift + I 
 		}
 	});
 });
