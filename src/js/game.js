@@ -310,6 +310,7 @@ $(document).ready(function () {
 			$('.allied-ships').removeClass('active-grid');
 			window.setTimeout(function(){
 				$('.logo').show();
+				playFlag = true;
 				StartGame();
 			}, showFor/2);
 		}
@@ -329,7 +330,7 @@ $(document).ready(function () {
 		
 		$('.game-container').show();
 		round = round + 1;
-		playFlag = true;
+		
 		try {
 			gtag('event', 'Start', {'event_category' : 'Game', 'event_label' : round});
 		}
