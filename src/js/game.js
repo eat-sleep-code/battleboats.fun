@@ -312,7 +312,7 @@ $(document).ready(function () {
 				$('.logo').show();
 				playFlag = true;
 				StartGame();
-			}, showFor/2);
+			}, showFor + 1);
 		}
 	}
 	
