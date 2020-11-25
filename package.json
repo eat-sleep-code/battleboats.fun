@@ -1,6 +1,6 @@
 {
   "name": "battle-boats",
-  "version": "2020.06.02.20",
+  "version": "2020.11.24.19",
   "description": "Battle Boats",
   "main": "index.html",
   "repository": {
@@ -8,11 +8,11 @@
     "url": "git+https://github.com/eat-sleep-code/battleboats.fun.git"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.2",
-    "@babel/preset-env": "^7.10.2",
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.12.7",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-minify": "^0.5.1",
-    "grunt": "^1.1.0",
+    "grunt": "^1.3.0",
     "grunt-babel": "^8.0.0",
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-concat": "^1.0.1",

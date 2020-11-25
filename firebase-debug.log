@@ -1,0 +1,31 @@
+[debug] [2020-11-25T02:25:25.847Z] ----------------------------------------------------------------------
+[debug] [2020-11-25T02:25:25.852Z] Command:       /usr/bin/node /usr/bin/firebase deploy
+[debug] [2020-11-25T02:25:25.853Z] CLI Version:   8.16.2
+[debug] [2020-11-25T02:25:25.853Z] Platform:      linux
+[debug] [2020-11-25T02:25:25.854Z] Node Version:  v15.3.0
+[debug] [2020-11-25T02:25:25.855Z] Time:          Tue Nov 24 2020 19:25:25 GMT-0700 (Mountain Standard Time)
+[debug] [2020-11-25T02:25:25.855Z] ----------------------------------------------------------------------
+[debug] [2020-11-25T02:25:25.855Z] 
+[debug] [2020-11-25T02:25:25.875Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-11-25T02:25:25.876Z] > authorizing via signed-in user
+[debug] [2020-11-25T02:25:25.877Z] [iam] checking project battleboats-fun for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-11-25T02:25:25.883Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/battleboats-fun:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-11-25T02:25:26.357Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 25 Nov 2020 02:25:26 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=195","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-11-25T02:25:26.363Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/battleboats-fun  
+ 
+[debug] [2020-11-25T02:25:26.575Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 25 Nov 2020 02:25:26 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'battleboats-fun'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2020-11-25T02:25:26.589Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/battleboats-fun/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}],"headers":[{"glob":"**","headers":{"X-Frame-Options":"sameorigin","X-XSS-Protection":"1; mode=block","X-Content-Type-Options":"nosniff","Content-Security-Policy":"default-src 'none'; script-src 'self' cdnjs.cloudflare.com www.googletagmanager.com www.google-analytics.com; style-src 'self' https://*; img-src 'self' data: www.google-analytics.com; font-src fonts.gstatic.com; object-src 'none'; media-src 'self'; connect-src 'self' www.google-analytics.com; frame-ancestors 'none'; base-uri 'self';","Referrer-Policy":"no-referrer-when-downgrade","Feature-Policy":"camera 'none'; magnetometer 'none'; microphone 'none'; usb 'none'"}}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2020-11-25T02:25:27.681Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 25 Nov 2020 02:25:27 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[battleboats-fun]: beginning deploy... 
+[info] i  hosting[battleboats-fun]: found 32 files in dist 
+[debug] [2020-11-25T02:25:27.728Z] [hosting] hash cache [ZGlzdA] not populated
+[debug] [2020-11-25T02:25:28.287Z] [hosting] hash cache [ZGlzdA] stored for 32 files
+[debug] [2020-11-25T02:25:28.289Z] [hosting][hash queue][FINAL] {"max":515,"min":93,"avg":130.78125,"active":0,"complete":32,"success":32,"errored":0,"retried":0,"total":32,"elapsed":560}
+[debug] [2020-11-25T02:25:28.290Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/battleboats-fun/versions/f5b07978d1368f18:populateFiles  
+ <request body omitted>
